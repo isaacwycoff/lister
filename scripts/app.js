@@ -36,6 +36,7 @@
 			payPeriodView: false,
 			metricsView: false,
 			starredCasesView: true,
+			projectsView: false,
 
 			// Pay Period
 			workdays: 0,
@@ -705,6 +706,7 @@
 				this.searchView = false;
 				this.payPeriodView = false;
 				this.metricsView = false;
+				this.projectsView = false;
 			},
 			showSearch: function () {
 				this.listView = false;
@@ -712,6 +714,7 @@
 				this.searchView = true;
 				this.payPeriodView = false;
 				this.metricsView = false;
+				this.projectsView = false;
 			},
 			showCase: function (caseNumber) {
 				this.listView = false;
@@ -720,6 +723,7 @@
 				this.payPeriodView = false;
 				this.metricsView = false;
 				this.starredCasesView = false;
+				this.projectsView = false;
 
 				// TODO add logic to only get this if the case has changed or is null
 				this.getCaseByNumber(caseNumber);
@@ -731,9 +735,21 @@
 				this.searchView = false;
 				this.payPeriodView = true;
 				this.metricsView = false;
+				this.projectsView = false;
 
 				// TODO add conditional logic to only get this if the pay period has changed or is null
 				this.getPayPeriod(this.dayToShow);
+			},
+
+			showProjects: function () {
+				this.listView = false;
+				this.caseView = false;
+				this.searchView = false;
+				this.payPeriodView = false;
+				this.metricsView = false;
+				this.projectsView = true;
+
+				// TODO-IW: update the projects view
 			},
 			showStarredCases: function () {
 				this.starredCasesView = true;
@@ -752,6 +768,7 @@
 				this.searchView = false;
 				this.payPeriodView = false;
 				this.metricsView = true;
+				this.projectsView = false;
 
 				//initialize metrics data
 				this.getMetrics(moment());

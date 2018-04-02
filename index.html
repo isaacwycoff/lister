@@ -40,11 +40,15 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 	<link rel="icon" type="image/png" href="images/empty.png">
 
-
+	<!-- Projects - should be brought into project-->
+	<script type="x-template" id="projects-tab">
+		<h3 v-text="title"></h3>
+	</script>
 </head>
 	<!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 <body>
+
 	<div id="app" v-cloak>
 		<!-- CONTROLS -->
 		<div class="control-bar" v-show="hasToken">
@@ -70,6 +74,7 @@
 				<button class="button u-full-width left-text" v-on:click.prevent="showSearch" v-bind:class="{ 'active': searchView }">Search</button>
 				<button class="button u-full-width left-text" v-on:click="toggleMetrics()" v-bind:class="{ 'active': metricsView }">Metrics</button>
 				<button class="button u-full-width left-text" v-on:click.prevent="showPayPeriod" v-bind:class="{ 'active': payPeriodView }">Pay Period</button>
+				<button class="button u-full-width left-text" v-on:click.prevent="showProjects" v-bind:class="{ 'active': projectsView }">Projects</button>
 			</div>
 
 		</div>
@@ -241,8 +246,10 @@
 						</div>
 						<!-- END METRICS VIEW-->
 						
-
-						
+						<!-- PROJECTS VIEW-->
+						<div class="projects-wrapper" v-show="projectsView">
+							<projects-tab></projects-tab>
+						</div>
 						
 						<!-- Home  -->
 						<div v-show="listView || caseView">
@@ -453,13 +460,15 @@
 	<script type="text/javascript" src="scripts/utilities/storage.js"></script>
 	<script type="text/javascript" src="scripts/utilities/notifier.js"></script>
 
+	<!-- Projects -->
+	<script type="text/javascript" src="projects/projects-tab.component.js"></script>
+
 	<!-- Vue Stuff -->
 	<script type="text/javascript" src="scripts/filters.js"></script>
 	<script type="text/javascript" src="scripts/components/add-interval.component.js"></script>
 	<script type="text/javascript" src="scripts/components/input-time.component.js"></script>
 	<script type="text/javascript" src="scripts/components/input-date.component.js"></script>
 	<script type="text/javascript" src="scripts/app.js"></script>
-
 
 	<script type="text/javascript">
 		window['moment-range'].extendMoment(moment);
